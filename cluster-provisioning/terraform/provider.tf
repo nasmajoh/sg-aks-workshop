@@ -1,5 +1,6 @@
 provider "azurerm" {
-  version = "=2.2.0"
+  #version = "=2.2.0"
+  version = "=2.23.0"
   features {}
 }
 
@@ -7,6 +8,7 @@ provider "github" {
   token        = var.github_token
   organization = var.github_organization
   version      = "=2.4.1"
+  #version      = "=2.9.2"
 }
 
 provider "kubernetes" {
@@ -15,11 +17,11 @@ provider "kubernetes" {
   client_key             = base64decode(azurerm_kubernetes_cluster.demo.kube_admin_config.0.client_key)
   cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.demo.kube_admin_config.0.cluster_ca_certificate)
   #version                = "=0.6.0"
-  version = "=1.11.1"
+  version = "=1.12.0"
 }
 
 provider "tls" {
-  version = "=2.1"
+  version = "=2.2.0"
 }
 
 

@@ -77,12 +77,17 @@ resource "azurerm_kubernetes_cluster" "demo" {
   role_based_access_control {
     enabled = true
     azure_active_directory {
-      client_app_id     = var.aad_client_app_id
-      server_app_id     = var.aad_server_app_id
-      server_app_secret = var.aad_server_app_secret
+      # 20200814, sutinse1 Lisatty managed -option
+      managed                 = true
+      // optional:
+      admin_group_object_ids  = ["7cc6e8bf-9243-4ddb-9e75-7854df411ba4"]
+      #client_app_id     = var.aad_client_app_id
+      #server_app_id     = var.aad_server_app_id
+      #server_app_secret = var.aad_server_app_secret
       tenant_id         = var.aad_tenant_id
     }
   }
+
   addon_profile {
     oms_agent {
       enabled                    = true
